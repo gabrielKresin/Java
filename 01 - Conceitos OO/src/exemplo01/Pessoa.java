@@ -4,9 +4,11 @@ package exemplo01;
 import javax.swing.JOptionPane;
 
 public class Pessoa {
+	
 
 	//Atributos (características)
 	String nome;
+	String x;
 	int idade;
 	double peso, altura;
 	
