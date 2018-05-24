@@ -1,9 +1,5 @@
 package controladores;
 
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import formularios.FormularioPrincipal;
@@ -13,10 +9,10 @@ public class Acao {
 	Produto p = new Produto();
 	FormularioPrincipal fm = new FormularioPrincipal();
 
-	public boolean verificaProduto(JTextField nomeProduto) {
+	public boolean verificaProduto(String nomeProduto) {
 		boolean valido;
 		try{
-			if(String.valueOf(nomeProduto.getText()).isEmpty()){
+			if(nomeProduto.isEmpty()){
 				valido = false;
 			}else{
 				valido = true;
@@ -27,10 +23,10 @@ public class Acao {
 		return valido;
 	}
 
-	public boolean verificaValor(JTextField valor) {
+	public boolean verificaValor(Double valor) {
 		boolean valido;
 		try{
-			if(Double.parseDouble(String.valueOf(valor.getText())) <= 0){
+			if(valor <= 0){
 				valido = false;
 			}else{
 				valido = true;
@@ -41,10 +37,10 @@ public class Acao {
 		return valido;
 	}
 
-	public boolean verificaQuantidade(JTextField quantidade) {
+	public boolean verificaQuantidade(int quantidade) {
 		boolean valido;
 		try {
-			if(Integer.parseInt(String.valueOf(quantidade.getText())) < 0){
+			if(quantidade < 0){
 				valido = false;
 			}else{
 				valido = true;
@@ -65,23 +61,39 @@ public class Acao {
 
 	}
 
-	public JTable exibirDados(){
+	public DefaultTableModel exibirDados(){
 		
-		DefaultTableModel exibirDados = new DefaultTableModel();
-
+		DefaultTableModel tabela = new DefaultTableModel();
 		//Colunas da tabela
-		exibirDados.addColumn("Produto");
-		exibirDados.addColumn("Valor");
-		exibirDados.addColumn("Quantidade");
+		tabela.addColumn("Produto");
+		tabela.addColumn("Valor");
+		tabela.addColumn("Quantidade");
 
 		//Linhas da tabela
+		
 		for (int i = 0; i < p.produtos.size(); i++) {
-			exibirDados.addRow(new Object[]{p.produtos.get(i).nome, p.produtos.get(i).quantidade, p.produtos.get(i).valor});
+			tabela.addRow(new Object[]{p.produtos.get(i).nome, p.produtos.get(i).valor, p.produtos.get(i).quantidade});
 		}
 
 		// JTable para exibir o DefaultTableModel
-		JTable tabela = new JTable(exibirDados);
+		
 
 		return tabela;
 	}
+	
+	public void excluir(int linha) {
+		Produto.produtos.remove(linha);
+	}
+	
+	public void alterar(String produto, double valor, int quantidade, int linha) {
+		
+		Produto p = new Produto();
+		p.nome = produto;
+		p.valor = valor;
+		p.quantidade = quantidade;
+		
+		p.produtos.set(linha, p);
+	}
+	
+	
 }
