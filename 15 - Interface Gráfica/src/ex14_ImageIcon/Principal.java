@@ -1,6 +1,7 @@
 package ex14_ImageIcon;
 
-import javax.print.DocFlavor.URL;
+import java.net.URL;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
