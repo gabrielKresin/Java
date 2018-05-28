@@ -1,4 +1,4 @@
-package ex05;
+package ex06;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Formulario {
@@ -14,19 +13,25 @@ public class Formulario {
 	public void inicializaFormulario() {
 		
 		JFrame formulario = new JFrame();
-		JLabel labelData = new JLabel();
-		JTextField txtData = new JTextField();
+		JLabel labelNumero1 = new JLabel();
+		JTextField txtNumero1 = new JTextField();
+		JLabel labelNumero2 = new JLabel();
+		JTextField txtNumero2 = new JTextField();
 		JButton botaoConfirmar = new JButton();
 		
-		formulario.setTitle("Exercício 5");
+		formulario.setTitle("Exercício 6");
 		formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		formulario.setSize(800, 600);
 		formulario.setLocationRelativeTo(null);
 		formulario.setLayout(null);
 		
-		labelData.setText("Digite a data:");
-		labelData.setBounds(10, 20, 150, 20);
-		txtData.setBounds(110, 20, 300, 20);
+		labelNumero1.setText("Digite um número:");
+		labelNumero1.setBounds(10, 20, 150, 20);
+		txtNumero1.setBounds(110, 20, 300, 20);
+		
+		labelNumero2.setText("Digite um número:");
+		labelNumero2.setBounds(10, 40, 150, 20);
+		txtNumero2.setBounds(110, 40, 300, 20);
 		
 		botaoConfirmar.setText("Confirmar");
 		botaoConfirmar.setBounds(300, 100, 150, 20);
@@ -35,19 +40,18 @@ public class Formulario {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int dia = Integer.parseInt(txtData.getText().toString());
-				Metodos m = new Metodos();
-				if(m.validaDia(dia) == true){
-					JOptionPane.showMessageDialog(null, m.verificaDia(dia));
-				}else{
-					JOptionPane.showMessageDialog(null, "Dia inválido");
-				}
 				
+				double n1 = Double.parseDouble(txtNumero1.getText().toString());
+				double n2 = Double.parseDouble(txtNumero2.getText().toString());
+				Metodos m = new Metodos();
+				m.verificaNumeros(n1, n2);
 			}
 		});
 		
-		formulario.add(labelData);
-		formulario.add(txtData);
+		formulario.add(labelNumero1);
+		formulario.add(txtNumero1);
+		formulario.add(labelNumero2);
+		formulario.add(txtNumero2);
 		formulario.add(botaoConfirmar);
 		formulario.setVisible(true);
 	}

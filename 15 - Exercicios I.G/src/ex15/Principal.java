@@ -1,4 +1,4 @@
-package ex05;
+package ex15;
 
 public class Principal {
 
@@ -6,7 +6,5 @@ public class Principal {
 		
 		Formulario f = new Formulario();
 		f.inicializaFormulario();
-
 	}
-
 }

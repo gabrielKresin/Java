@@ -1,11 +1,11 @@
-package ex05;
+package ex12;
 
 public class Principal {
 
 	public static void main(String[] args) {
 		
-		Formulario f = new Formulario();
-		f.inicializaFormulario();
+			Formulario f = new Formulario();
+			f.inicializaFormulario();
 
 	}
 

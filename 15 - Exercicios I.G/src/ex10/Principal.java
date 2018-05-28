@@ -1,4 +1,4 @@
-package ex05;
+package ex10;
 
 public class Principal {
 

@@ -1,4 +1,4 @@
-package ex05;
+package ex07;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,20 +14,21 @@ public class Formulario {
 	public void inicializaFormulario() {
 		
 		JFrame formulario = new JFrame();
-		JLabel labelData = new JLabel();
-		JTextField txtData = new JTextField();
+		JLabel labelNumero = new JLabel();
+		JTextField txtNumero = new JTextField();
 		JButton botaoConfirmar = new JButton();
 		
-		formulario.setTitle("Exercício 5");
+		formulario.setTitle("Exercício 7");
 		formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		formulario.setSize(800, 600);
 		formulario.setLocationRelativeTo(null);
 		formulario.setLayout(null);
 		
-		labelData.setText("Digite a data:");
-		labelData.setBounds(10, 20, 150, 20);
-		txtData.setBounds(110, 20, 300, 20);
+		labelNumero.setText("Digite um número:");
+		labelNumero.setBounds(10, 20, 150, 20);
+		txtNumero.setBounds(110, 20, 300, 20);
 		
+
 		botaoConfirmar.setText("Confirmar");
 		botaoConfirmar.setBounds(300, 100, 150, 20);
 		
@@ -35,19 +36,16 @@ public class Formulario {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int dia = Integer.parseInt(txtData.getText().toString());
+				double num = Double.parseDouble(txtNumero.getText().toString());
+				
 				Metodos m = new Metodos();
-				if(m.validaDia(dia) == true){
-					JOptionPane.showMessageDialog(null, m.verificaDia(dia));
-				}else{
-					JOptionPane.showMessageDialog(null, "Dia inválido");
-				}
+				JOptionPane.showMessageDialog(null, m.tabuada(num));
 				
 			}
 		});
 		
-		formulario.add(labelData);
-		formulario.add(txtData);
+		formulario.add(labelNumero);
+		formulario.add(txtNumero);
 		formulario.add(botaoConfirmar);
 		formulario.setVisible(true);
 	}
